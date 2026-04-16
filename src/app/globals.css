@@ -1,0 +1,24 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --suumo-green: #19a453;
+  --suumo-green-dark: #0f8a43;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Hiragino Kaku Gothic ProN', 'Yu Gothic', 'Meiryo', system-ui,
+    -apple-system, sans-serif;
+  background: #f7f8fa;
+  color: #1a1a1a;
+}
+
+/* Suumo-style section header stripe */
+.suumo-stripe {
+  background: linear-gradient(90deg, var(--suumo-green) 0%, var(--suumo-green-dark) 100%);
+}
