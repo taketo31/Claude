@@ -5,6 +5,21 @@ A Japanese-friendly property search site for Malaysia, inspired by Japan's
 data layer so it can be connected to PropertyGuru / iProperty listings once a
 formal partner data agreement is in place.
 
+## 🌐 Live demo
+
+Auto-deployed to **GitHub Pages** on every push via
+[`.github/workflows/deploy-pages.yml`](.github/workflows/deploy-pages.yml).
+
+Once you enable Pages in your repo (**Settings → Pages → Build and deployment
+→ Source: GitHub Actions**), the workflow publishes to:
+
+```
+https://<your-github-username>.github.io/<repo-name>/
+```
+
+The workflow auto-detects the repo name and passes it as `NEXT_PUBLIC_BASE_PATH`
+so relative asset URLs resolve correctly under the project subpath.
+
 ## ✨ Features
 
 - **Bilingual UI (日本語 / English)** — cookie-based locale switcher.

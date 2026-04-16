@@ -2,12 +2,14 @@
 
 import Link from 'next/link';
 import type { Listing } from '@/lib/types';
-import { type Locale, t } from '@/lib/i18n';
+import { t } from '@/lib/i18n';
 import { formatArea, formatPrice } from '@/lib/format';
 import { labelFor } from '@/lib/taxonomy';
 import { useDisplay } from './DisplayToggles';
+import { useLocale } from './LocaleProvider';
 
-export function PropertyCard({ locale, listing }: { locale: Locale; listing: Listing }) {
+export function PropertyCard({ listing }: { listing: Listing }) {
+  const locale = useLocale();
   const { currency, areaUnit } = useDisplay();
   const titleForLocale = locale === 'ja' && listing.titleJa ? listing.titleJa : listing.title;
   const areaLabel =

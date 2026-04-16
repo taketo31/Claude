@@ -1,9 +1,11 @@
 'use client';
 
 import { useRouter, useSearchParams, usePathname } from 'next/navigation';
-import { type Locale, t } from '@/lib/i18n';
+import { t } from '@/lib/i18n';
+import { useLocale } from './LocaleProvider';
 
-export function SortSelect({ locale, value }: { locale: Locale; value: string }) {
+export function SortSelect({ value }: { value: string }) {
+  const locale = useLocale();
   const router = useRouter();
   const pathname = usePathname();
   const searchParams = useSearchParams();

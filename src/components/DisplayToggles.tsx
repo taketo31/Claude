@@ -2,7 +2,8 @@
 
 import { createContext, useContext, useEffect, useState } from 'react';
 import type { AreaUnit, Currency } from '@/lib/format';
-import { type Locale, t } from '@/lib/i18n';
+import { t } from '@/lib/i18n';
+import { useLocale } from './LocaleProvider';
 
 type Ctx = {
   currency: Currency;
@@ -55,7 +56,6 @@ export function DisplayProvider({ children }: { children: React.ReactNode }) {
 export function useDisplay(): Ctx {
   const ctx = useContext(DisplayCtx);
   if (!ctx) {
-    // Fallback defaults when used outside provider (e.g. SSR initial render).
     return {
       currency: 'MYR',
       setCurrency: () => {},
@@ -66,7 +66,8 @@ export function useDisplay(): Ctx {
   return ctx;
 }
 
-export function DisplayToggleBar({ locale }: { locale: Locale }) {
+export function DisplayToggleBar() {
+  const locale = useLocale();
   const { currency, setCurrency, areaUnit, setAreaUnit } = useDisplay();
 
   return (

@@ -1,8 +1,12 @@
-import Link from 'next/link';
-import { type Locale, t } from '@/lib/i18n';
-import { LocaleSwitcher } from './LocaleSwitcher';
+'use client';
 
-export function Header({ locale }: { locale: Locale }) {
+import Link from 'next/link';
+import { t } from '@/lib/i18n';
+import { LocaleSwitcher } from './LocaleSwitcher';
+import { useLocale } from './LocaleProvider';
+
+export function Header() {
+  const locale = useLocale();
   return (
     <header className="suumo-stripe text-white shadow">
       <div className="mx-auto flex max-w-7xl flex-wrap items-center justify-between gap-3 px-4 py-3">
@@ -24,7 +28,7 @@ export function Header({ locale }: { locale: Locale }) {
           </Link>
           <span className="hidden opacity-60 sm:inline">{t(locale, 'nav.favorites')}</span>
           <span className="hidden opacity-60 sm:inline">{t(locale, 'nav.guide')}</span>
-          <LocaleSwitcher locale={locale} />
+          <LocaleSwitcher />
         </nav>
       </div>
     </header>

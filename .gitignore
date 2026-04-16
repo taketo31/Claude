@@ -5,7 +5,7 @@ node_modules
 
 # next
 .next
-out
+/out
 build
 next-env.d.ts.bak
 

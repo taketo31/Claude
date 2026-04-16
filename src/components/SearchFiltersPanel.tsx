@@ -5,6 +5,7 @@ import { useState } from 'react';
 import { type Locale, t } from '@/lib/i18n';
 import type { Furnishing, ListingType, PropertyCategory, SearchFilters } from '@/lib/types';
 import { BUILDING_FACILITIES, UNIT_FEATURES, CONDITION_TAGS, type TaxonomyItem } from '@/lib/taxonomy';
+import { useLocale } from './LocaleProvider';
 
 const CATEGORIES: PropertyCategory[] = [
   'condo',
@@ -18,14 +19,13 @@ const BEDROOM_OPTIONS = [1, 2, 3, 4];
 const WALK_OPTIONS = [5, 10, 15, 20];
 
 export function SearchFiltersPanel({
-  locale,
   initial,
   areas,
 }: {
-  locale: Locale;
   initial: SearchFilters;
   areas: { name: string; nameJa?: string }[];
 }) {
+  const locale = useLocale();
   const router = useRouter();
   const [filters, setFilters] = useState<SearchFilters>(initial);
 

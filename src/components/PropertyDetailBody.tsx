@@ -2,12 +2,14 @@
 
 import { useState } from 'react';
 import type { Listing } from '@/lib/types';
-import { type Locale, t } from '@/lib/i18n';
+import { t } from '@/lib/i18n';
 import { formatArea, formatPrice } from '@/lib/format';
 import { labelFor } from '@/lib/taxonomy';
 import { useDisplay, DisplayToggleBar } from './DisplayToggles';
+import { useLocale } from './LocaleProvider';
 
-export function PropertyDetailBody({ locale, listing }: { locale: Locale; listing: Listing }) {
+export function PropertyDetailBody({ listing }: { listing: Listing }) {
+  const locale = useLocale();
   const { currency, areaUnit } = useDisplay();
   const [activeImg, setActiveImg] = useState(0);
 
@@ -55,7 +57,7 @@ export function PropertyDetailBody({ locale, listing }: { locale: Locale; listin
 
       {/* Info panel */}
       <div className="rounded-lg border border-gray-200 bg-white p-5 shadow-sm">
-        <DisplayToggleBar locale={locale} />
+        <DisplayToggleBar />
 
         <div className="mb-2 text-xs font-bold uppercase tracking-wide text-suumo-600">
           {listing.listingType === 'rent' ? t(locale, 'filter.rent') : t(locale, 'filter.sale')}
